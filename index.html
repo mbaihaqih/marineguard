@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#103f46">
+  <title>MARINE-GUARD NTB | Kenali Laut, Lindungi Kawasannya</title>
+  <style>
+    :root{
+      --navy:#103f46; --navy2:#174f56; --teal:#16856f; --mint:#dff3ec;
+      --sea:#d9eef1; --ink:#18383b; --muted:#617a7b; --paper:#f5faf8;
+      --line:#dce9e5; --white:#fff; --gold:#f0c878; --shadow:0 14px 40px rgba(16,63,70,.10);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--paper);line-height:1.55}
+    a{color:inherit;text-decoration:none}
+    button,input,select,textarea{font:inherit}
+    .wrap{width:min(1160px,calc(100% - 40px));margin:auto}
+    header{background:rgba(16,63,70,.97);color:white;position:sticky;top:0;z-index:20;box-shadow:0 5px 20px rgba(0,0,0,.08)}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.04em}
+    .brand-mark{width:42px;height:42px;border-radius:14px;background:#dff3ec;color:var(--navy);display:grid;place-items:center;font-size:22px}
+    .brand small{display:block;font-size:10px;letter-spacing:.16em;color:#b9d8d2;font-weight:600;margin-top:1px}
+    nav{display:flex;align-items:center;gap:28px;font-size:13px;color:#e0eeeb}
+    nav a:hover{color:var(--gold)}
+    .nav-cta,.btn{border:0;border-radius:12px;padding:12px 17px;font-weight:700;cursor:pointer;transition:.2s}
+    .nav-cta,.btn-primary{background:#dff3ec;color:var(--navy)}
+    .btn-primary:hover,.nav-cta:hover{background:white;transform:translateY(-1px)}
+    .btn-outline{background:white;color:var(--navy);border:1px solid var(--line)}
+    .btn-outline:hover{border-color:var(--teal);background:#f0faf6}
+    .hero{background:linear-gradient(120deg,#103f46 0%,#17675f 62%,#278b76 100%);color:white;padding:72px 0 82px;overflow:hidden;position:relative}
+    .hero:after{content:"";position:absolute;width:540px;height:540px;border:1px solid rgba(255,255,255,.13);border-radius:50%;right:-150px;top:-220px;box-shadow:0 0 0 55px rgba(255,255,255,.035),0 0 0 110px rgba(255,255,255,.025)}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center;position:relative;z-index:1}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(223,243,236,.13);border:1px solid rgba(223,243,236,.25);padding:7px 12px;border-radius:999px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#d6eee7}
+    h1{font-size:clamp(38px,5vw,60px);line-height:1.05;letter-spacing:-.045em;margin:20px 0 18px}
+    .hero p{max-width:540px;color:#d7e9e5;font-size:16px;margin:0 0 27px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .hero .btn-primary{background:#e4f5ee}
+    .hero .btn-outline{background:transparent;color:white;border-color:rgba(255,255,255,.42)}
+    .hero .btn-outline:hover{background:rgba(255,255,255,.1)}
+    .hero-note{font-size:11px;color:#c1ded7;margin-top:17px}
+    .visual-card{background:#f8fcfa;color:var(--ink);padding:14px;border-radius:24px;box-shadow:0 24px 60px rgba(0,0,0,.2);transform:rotate(1deg)}
+    .visual-top{display:flex;justify-content:space-between;align-items:center;padding:5px 5px 13px;font-size:12px;font-weight:800}
+    .live{color:#16856f;font-size:10px;display:flex;align-items:center;gap:6px}
+    .dot{width:7px;height:7px;background:#20a77d;border-radius:50%;display:inline-block}
+    .map-art{height:255px;border-radius:16px;overflow:hidden;background:#d9eef1;position:relative}
+    .map-art svg{width:100%;height:100%;display:block}
+    .map-label{position:absolute;background:white;padding:8px 10px;border-radius:10px;box-shadow:0 5px 16px #1233;font-size:10px;font-weight:700}
+    .map-label.one{left:12px;top:13px}.map-label.two{right:12px;bottom:13px}
+    .map-legend{display:flex;gap:15px;flex-wrap:wrap;padding:13px 5px 3px;font-size:10px;color:#627b7b}
+    .legend-dot{width:8px;height:8px;border-radius:3px;display:inline-block;margin-right:5px}
+    section{padding:76px 0}
+    .section-head{max-width:650px;margin-bottom:30px}
+    .kicker{color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.15em;font-weight:800}
+    h2{font-size:clamp(27px,3vw,38px);line-height:1.15;letter-spacing:-.03em;margin:10px 0 12px;color:var(--navy)}
+    .section-head p{color:var(--muted);margin:0}
+    .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .feature{background:white;border:1px solid var(--line);border-radius:18px;padding:23px;box-shadow:0 5px 20px rgba(16,63,70,.035)}
+    .feature-icon{width:46px;height:46px;border-radius:14px;background:var(--mint);display:grid;place-items:center;font-size:22px;margin-bottom:16px}
+    .feature h3{font-size:16px;margin:0 0 7px;color:var(--navy)}
+    .feature p{font-size:13px;color:var(--muted);margin:0}
+    .demo{background:#eaf4f0}
+    .demo-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:stretch}
+    .panel{background:white;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow)}
+    .panel-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:16px}
+    .panel-head h3{margin:0;color:var(--navy);font-size:16px}
+    .tag{font-size:10px;background:#eef6f2;color:#387466;padding:6px 9px;border-radius:99px;font-weight:700}
+    .demo-map{height:300px;background:#d9eef1;border-radius:15px;overflow:hidden;position:relative}
+    .demo-map svg{width:100%;height:100%;display:block}
+    .map-controls{position:absolute;right:12px;top:12px;display:grid;gap:7px}
+    .map-controls button{width:34px;height:34px;border:0;background:white;border-radius:9px;box-shadow:0 3px 10px #1232;cursor:pointer;font-weight:800;color:var(--navy)}
+    .map-caption{font-size:11px;color:var(--muted);margin:10px 2px 0}
+    .status-box{background:#f4faf7;border:1px solid #dceee5;border-radius:15px;padding:17px;margin-bottom:14px}
+    .status-title{font-size:11px;color:var(--muted);margin-bottom:6px}
+    .status-main{font-size:19px;font-weight:800;color:var(--navy)}
+    .status-desc{font-size:12px;color:var(--muted);margin-top:5px}
+    .status-pill{display:inline-block;background:#fff2d8;color:#8b641e;font-size:10px;font-weight:800;padding:5px 8px;border-radius:99px;margin-top:9px}
+    .location-output{font-size:11px;color:var(--muted);margin:10px 0;min-height:34px;word-break:break-word}
+    .full{width:100%}
+    .info-note{font-size:10px;color:#788d8a;line-height:1.5;margin-top:12px}
+    .report-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:30px;align-items:start}
+    .report-copy{padding-top:10px}
+    .report-copy p{color:var(--muted);font-size:14px}
+    form{display:grid;gap:13px}
+    label{font-size:11px;font-weight:800;color:#456264;display:block;margin-bottom:6px}
+    input,select,textarea{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:11px;background:#fbfdfc;color:var(--ink);outline:none}
+    input:focus,select:focus,textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px #16856f18}
+    textarea{min-height:90px;resize:vertical}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .file-hint{font-size:10px;color:var(--muted);margin-top:5px}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+    .step{border-top:2px solid #9acdbb;padding:16px 12px 0}
+    .step-num{font-size:11px;color:var(--teal);font-weight:900;letter-spacing:.1em}
+    .step h3{font-size:14px;margin:8px 0 5px;color:var(--navy)}
+    .step p{font-size:11px;color:var(--muted);margin:0}
+    .disclaimer{background:#fff7e6;border:1px solid #f1dfb9;padding:14px 16px;border-radius:13px;color:#765a27;font-size:11px;margin-top:20px}
+    footer{background:#103f46;color:#d7e9e5;padding:35px 0}
+    .footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
+    footer p{font-size:11px;color:#b7d0ca;margin:5px 0 0}
+    .toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#103f46;color:white;padding:12px 17px;border-radius:12px;box-shadow:var(--shadow);font-size:12px;z-index:50;transition:.25s;max-width:calc(100% - 30px)}
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+    @media(max-width:850px){nav{gap:14px}.hero-grid,.demo-grid,.report-grid{grid-template-columns:1fr}.visual-card{max-width:570px}.feature-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:600px){.wrap{width:min(100% - 28px,1160px)}.nav{height:66px}nav a:not(.nav-cta){display:none}.hero{padding:55px 0 60px}.hero-grid{gap:35px}.feature-grid{grid-template-columns:1fr}section{padding:58px 0}.steps{grid-template-columns:1fr 1fr}.map-art{height:220px}.demo-map{height:245px}.form-row{grid-template-columns:1fr}.panel{padding:16px}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#beranda">
+      <span class="brand-mark">≈</span>
+      <span>MARINE-GUARD<small>NUSA TENGGARA BARAT</small></span>
+    </a>
+    <nav>
+      <a href="#fitur">Fitur</a><a href="#peta">Peta konservasi</a><a href="#pelaporan">Pelaporan</a>
+      <a class="nav-cta" href="#peta">Jelajahi peta ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="beranda">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">🌊 Informasi konservasi laut NTB</span>
+        <h1>Kenali Laut,<br>Lindungi Kawasannya.</h1>
+        <p>Kenali lokasi kawasan konservasi, pahami zonasinya, dan ikut menjaga ekosistem laut Nusa Tenggara Barat melalui satu website yang mudah diakses.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#peta">Lihat peta konservasi</a>
+          <a class="btn btn-outline" href="#pelaporan">Laporkan kondisi laut</a>
+        </div>
+        <div class="hero-note">Konsep website informasi zonasi dan pelaporan partisipatif.</div>
+      </div>
+      <div class="visual-card">
+        <div class="visual-top"><span>Jelajahi kawasan konservasi</span><span class="live"><i class="dot"></i> PETA ILUSTRATIF</span></div>
+        <div class="map-art">
+          <svg viewBox="0 0 600 340" preserveAspectRatio="xMidYMid slice" aria-label="Ilustrasi peta kawasan laut">
+            <rect width="600" height="340" fill="#d7edf0"/>
+            <path d="M0 0H125L150 37L137 78L166 113L142 160L163 205L128 255L149 340H0Z" fill="#c8cba7"/>
+            <path d="M600 0H480L457 43L473 86L445 130L470 181L449 230L478 281L458 340H600Z" fill="#c8cba7"/>
+            <path d="M198 57Q290 12 397 57L434 126L399 216L316 250L217 211L179 133Z" fill="#8bcdb4" opacity=".72" stroke="#25866e" stroke-width="3" stroke-dasharray="10 7"/>
+            <path d="M250 91Q300 56 365 88L391 140L357 192L282 188L235 139Z" fill="#f2d58b" opacity=".9" stroke="#ad8437" stroke-width="2"/>
+            <path d="M0 290Q140 255 250 292T600 280" fill="none" stroke="#a6d8de" stroke-width="2"/>
+            <path d="M0 310Q140 275 250 312T600 300" fill="none" stroke="#a6d8de" stroke-width="2"/>
+            <circle cx="318" cy="137" r="12" fill="#d65d50" stroke="white" stroke-width="5"/>
+            <circle cx="318" cy="137" r="23" fill="none" stroke="#d65d50" stroke-width="2" opacity=".5"/>
+            <text x="318" y="34" text-anchor="middle" font-size="15" font-weight="700" fill="#245c51">Area konservasi (ilustrasi)</text>
+            <text x="24" y="316" font-size="12" fill="#56776e">DARATAN</text><text x="500" y="316" font-size="12" fill="#56776e">DARATAN</text>
+          </svg>
+          <div class="map-label one">📍 Peta interaktif</div>
+          <div class="map-label two">Zona konservasi • NTB</div>
+        </div>
+        <div class="map-legend"><span><i class="legend-dot" style="background:#8bcdb4"></i>Area konservasi</span><span><i class="legend-dot" style="background:#f2d58b"></i>Zona (ilustrasi)</span><span><i class="legend-dot" style="background:#d65d50"></i>Posisi pengguna</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fitur">
+    <div class="wrap">
+      <div class="section-head"><div class="kicker">Apa yang bisa dilakukan?</div><h2>Satu website, tiga cara ikut menjaga laut.</h2><p>MARINE-GUARD dirancang untuk membantu masyarakat memperoleh informasi kawasan konservasi dan berpartisipasi dalam perlindungan ekosistem.</p></div>
+      <div class="feature-grid">
+        <article class="feature"><div class="feature-icon">📍</div><h3>Deteksi lokasi & zonasi</h3><p>Gunakan GPS untuk mengetahui posisi pengguna dan mencocokkannya dengan batas kawasan serta zonasi konservasi.</p></article>
+        <article class="feature"><div class="feature-icon">🗺️</div><h3>Peta kawasan konservasi</h3><p>Jelajahi persebaran kawasan konservasi di NTB dan baca informasi dasar mengenai kawasan serta aturan zonasinya.</p></article>
+        <article class="feature"><div class="feature-icon">📸</div><h3>Pelaporan partisipatif</h3><p>Kirim laporan awal tentang sampah laut, kerusakan ekosistem, atau dugaan pelanggaran beserta foto dan titik lokasi.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="demo" id="peta">
+    <div class="wrap">
+      <div class="section-head"><div class="kicker">Coba fitur utama</div><h2>Di mana posisi kamu sekarang?</h2><p>Dalam versi pengembangan, posisi GPS akan dicocokkan dengan data batas kawasan dan zonasi resmi.</p></div>
+      <div class="demo-grid">
+        <div class="panel">
+          <div class="panel-head"><h3>Peta kawasan konservasi</h3><span class="tag">Tampilan demo</span></div>
+          <div class="demo-map">
+            <svg viewBox="0 0 600 420" preserveAspectRatio="xMidYMid slice">
+              <rect width="600" height="420" fill="#d9eef1"/>
+              <path d="M0 0H110L139 52L120 104L152 159L124 215L150 276L115 342L137 420H0Z" fill="#c9cba8"/>
+              <path d="M600 0H492L465 54L486 106L455 164L482 224L454 285L484 349L463 420H600Z" fill="#c9cba8"/>
+              <path d="M180 76Q290 18 413 79L454 172L410 279L312 320L203 269L162 170Z" fill="#80c9ab" opacity=".72" stroke="#21836b" stroke-width="3" stroke-dasharray="9 7"/>
+              <path d="M235 116Q300 75 369 111L397 174L360 235L278 229L220 174Z" fill="#f0d38a" stroke="#a27b32" stroke-width="2"/>
+              <text x="305" y="55" text-anchor="middle" font-size="16" fill="#285f52" font-weight="700">Kawasan konservasi</text>
+              <text x="305" y="180" text-anchor="middle" font-size="14" fill="#72561e">Zona (ilustrasi)</text>
+              <circle cx="305" cy="169" r="9" fill="#d45a50" stroke="white" stroke-width="4"/>
+              <text x="305" y="350" text-anchor="middle" font-size="13" fill="#55766f">Peta contoh — bukan data navigasi</text>
+            </svg>
+            <div class="map-controls"><button type="button" aria-label="Perbesar" onclick="toast('Peta demo belum mendukung zoom.')">+</button><button type="button" aria-label="Perkecil" onclick="toast('Peta demo belum mendukung zoom.')">−</button></div>
+          </div>
+          <p class="map-caption">Ilustrasi bentuk kawasan. Batas dan warna zona sebenarnya harus menggunakan data spasial resmi.</p>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h3>Status lokasi pengguna</h3><span class="tag">Simulasi fitur</span></div>
+          <div class="status-box">
+            <div class="status-title">HASIL DETEKSI ZONASI</div>
+            <div class="status-main" id="statusMain">Belum mendeteksi lokasi</div>
+            <div class="status-desc" id="statusDesc">Tekan tombol di bawah dan izinkan akses lokasi pada browser.</div>
+            <span class="status-pill" id="statusPill">Menunggu GPS</span>
+          </div>
+          <button class="btn btn-primary full" type="button" onclick="detectLocation()">◎ Deteksi lokasi saya</button>
+          <div class="location-output" id="locationOutput">Koordinat akan ditampilkan di sini setelah izin lokasi diberikan.</div>
+          <div class="info-note">Catatan: tombol ini hanya menguji akses GPS browser. Website demo ini belum memiliki data poligon zonasi resmi, sehingga belum dapat memastikan apakah pengguna berada di dalam kawasan konservasi.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pelaporan">
+    <div class="wrap report-grid">
+      <div class="report-copy">
+        <div class="kicker">Partisipasi masyarakat</div>
+        <h2>Temukan sesuatu? Bantu laporkan.</h2>
+        <p>Masyarakat, nelayan, wisatawan, dan pengguna laut lainnya dapat menjadi bagian dari upaya perlindungan ekosistem dengan menyampaikan informasi awal mengenai kondisi di lapangan.</p>
+        <p>Setiap laporan nantinya perlu diverifikasi oleh pengelola atau petugas terkait sebelum dinyatakan sebagai kejadian terkonfirmasi.</p>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Formulir laporan (contoh)</h3><span class="tag">Belum terkirim ke server</span></div>
+        <form id="reportForm">
+          <div><label for="category">Jenis laporan</label><select id="category" required><option value="">Pilih jenis laporan</option><option>Sampah laut</option><option>Kerusakan terumbu karang</option><option>Gangguan ekosistem lamun</option><option>Kerusakan mangrove</option><option>Dugaan pelanggaran zonasi</option><option>Lainnya</option></select></div>
+          <div class="form-row">
+            <div><label for="reportDate">Tanggal kejadian</label><input type="date" id="reportDate" required></div>
+            <div><label for="reportLocation">Lokasi kejadian</label><input id="reportLocation" placeholder="Contoh: Gili Sulat" required></div>
+          </div>
+          <div><label for="description">Keterangan</label><textarea id="description" placeholder="Ceritakan kondisi yang kamu temukan..." required></textarea></div>
+          <div><label for="photo">Dokumentasi foto (opsional)</label><input type="file" id="photo" accept="image/*"><div class="file-hint">Pada website nyata, foto akan diunggah ke penyimpanan yang aman.</div></div>
+          <button class="btn btn-primary full" type="submit">Kirim contoh laporan →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:15px">
+    <div class="wrap">
+      <div class="section-head"><div class="kicker">Rencana alur penggunaan</div><h2>Sederhana untuk diakses, bermanfaat untuk konservasi.</h2></div>
+      <div class="steps">
+        <div class="step"><div class="step-num">01 / AKSES</div><h3>Buka website</h3><p>Pengguna mengakses MARINE-GUARD melalui browser.</p></div>
+        <div class="step"><div class="step-num">02 / DETEKSI</div><h3>Aktifkan GPS</h3><p>Koordinat dicocokkan dengan data batas dan zonasi resmi.</p></div>
+        <div class="step"><div class="step-num">03 / PAHAMI</div><h3>Baca informasi</h3><p>Website menampilkan kawasan, zona, dan aturan aktivitas.</p></div>
+        <div class="step"><div class="step-num">04 / BERPARTISIPASI</div><h3>Kirim laporan</h3><p>Pengguna menyampaikan temuan untuk diverifikasi.</p></div>
+      </div>
+      <div class="disclaimer"><strong>Catatan pengembangan:</strong> MARINE-GUARD NTB merupakan konsep prototipe. Implementasi nyata memerlukan data batas dan zonasi resmi, validasi aturan oleh pengelola kawasan, perlindungan data pengguna, serta mekanisme verifikasi laporan. Integrasi dengan SIDAKO dapat dijajaki melalui kerja sama dan izin dari KKP.</div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <div class="brand"><span class="brand-mark">≈</span><span>MARINE-GUARD<small>NUSA TENGGARA BARAT</small></span></div>
+    <div><strong style="font-size:12px">Kenali Laut, Lindungi Kawasannya.</strong><p>Konsep website informasi zonasi dan pelaporan partisipatif.</p></div>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+  let toastTimer;
+  function toast(message){
+    const el=document.getElementById('toast'); el.textContent=message; el.classList.add('show');
+    clearTimeout(toastTimer); toastTimer=setTimeout(()=>el.classList.remove('show'),3500);
+  }
+  function detectLocation(){
+    const main=document.getElementById('statusMain'), desc=document.getElementById('statusDesc'),
+          pill=document.getElementById('statusPill'), output=document.getElementById('locationOutput');
+    if(!navigator.geolocation){
+      main.textContent='GPS tidak tersedia'; desc.textContent='Browser atau perangkat ini tidak mendukung geolocation.';
+      pill.textContent='Tidak tersedia'; return;
+    }
+    main.textContent='Mencari lokasi…'; desc.textContent='Mohon izinkan akses lokasi pada browser.';
+    pill.textContent='Memproses';
+    navigator.geolocation.getCurrentPosition(pos=>{
+      const lat=pos.coords.latitude.toFixed(6), lon=pos.coords.longitude.toFixed(6);
+      main.textContent='Lokasi berhasil terdeteksi';
+      desc.textContent='Koordinat berhasil dibaca. Status zonasi belum dapat ditentukan pada prototipe ini.';
+      pill.textContent='GPS aktif — zona belum diketahui';
+      output.textContent='Koordinat: '+lat+', '+lon+' • Akurasi ±'+Math.round(pos.coords.accuracy)+' meter';
+    },err=>{
+      main.textContent='Lokasi belum dapat diakses';
+      desc.textContent=err.code===1?'Izin lokasi ditolak. Aktifkan izin lokasi untuk website ini.':'Periksa GPS dan koneksi, lalu coba lagi.';
+      pill.textContent='Deteksi gagal';
+      output.textContent='Browser tidak memberikan koordinat lokasi.';
+    },{enableHighAccuracy:true,timeout:12000,maximumAge:30000});
+  }
+  document.getElementById('reportForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    toast('Contoh laporan berhasil divalidasi di halaman demo. Belum dikirim atau disimpan ke server.');
+    this.reset();
+  });
+</script>
+</body>
+</html>
